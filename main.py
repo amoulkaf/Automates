@@ -103,6 +103,42 @@ def intersection(auto1, auto2):
     
     return self
 
+def determinisation(auto):
+    all_states = list()
+    fstates = list()
+    alphabet = auto.get_alphabet()
+    fstates.append(auto.get_initial_states())
+    trasitions = auto.get_transitions()
+
+    for in fstates:
+        for al in alphabet:
+            for t in transitions:
+                if t[0] in s and al == t[1]:
+                    all_states.append(t[2])
+            self.add_transition(s, al, all_states)
+            if not all_states in fstates:
+                fstates.append(all_states)
+            all_states = list()
+    #Adding states
+    for s in self.get_transitions():
+        if not s[0] in self.get_states():
+            self.add_state(s[0])
+        if not s[2] in self.get_states():
+            self.add_state(s[2])
+    #Adding final states
+    for s in self.get_states():
+        for f in s:
+            if f in auto.get_final_states():
+                if not s in self.get_final_state():
+                    self.add_final_state(s)
+                    
+    self.add_alphabets(alpha)
+    initial_states = list()
+    initial_states.append(auto.get_initial_states())
+    self.add_initial_states(initial_states)
+    return self
+    
+
 B = automate2( )
 C = automate( )
 self = intersection(B,C)
